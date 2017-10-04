@@ -26,4 +26,14 @@ class FindMax(num1 : Int, num2 : Int){
             b
         }
     }
+
+    /*
+    * var return = if (a > b){
+            //println("$a is greater")
+            a
+        }else{
+            //println("$b is greater")
+            b
+        }
+     */
 }

@@ -25,4 +25,23 @@ class TellTime {
           else -> println("DND i am at work")
       }//when
     }
+
+
+    /* when as expression
+    *
+    * var return = when(hour){
+          0, 1, 2, 3, 4 -> {
+              //multiple lines in a case
+              println("it is midnight")
+              println("Do not disturb me")
+          }// case ends
+
+          5 -> println("good morning")
+          12 -> println("good noon")
+          16 -> println("good evening")
+          22 -> println("good night")
+
+          else -> println("DND i am at work")
+      }
+    */
 }

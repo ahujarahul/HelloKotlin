@@ -1,9 +1,13 @@
 import models.Person
 import utils.Addition
+import utils.FindMax
+import utils.TellTime
 
 /**
  * Created by rahulahuja on 15/09/17.
  */
+
+//All variables, when declared, should be initialized in Kotlin
 
 //This is a Kotlin function which will return void (Unit)
 fun main(args : Array<String>) : Unit {
@@ -28,7 +32,7 @@ fun main(args : Array<String>) : Unit {
     displayName(name)
 
     var demoObj = Demo()
-    demoObj.greet("Rahul")
+    demoObj.greet("Ray")
 
     val personObj = Person(name, 25, 50000.0, false)
     displayPersonInfo(personObj)
@@ -40,7 +44,14 @@ fun main(args : Array<String>) : Unit {
 
     val personName = "Ricky"
     val personObj2 = Person(personObj, personName)
-    println("\ncAnother Person object : "+ personObj2.toString())
+    println("\nAnother Person object : "+ personObj2.toString())
+
+
+    val findMax = FindMax(5 , 2)
+    println("\nmax value : "+ findMax.getMax())
+
+    val tellTime = TellTime()
+    tellTime.getTime(1)
 
 }
 
@@ -100,6 +111,20 @@ fun getStringDetails(string2: String) {
 fun displayName(name: String) {
     println("in displayName() -- Name is : "+ name)
 }
+
+/*
+* data types in Kotlin :
+* Boolean   1 bit
+* Byte      8 bits
+* Char      16 btis
+* Short     16 bits
+* Int       32 bits
+* Long      64 bits
+* Float     32 bits     for 50.0 to be float, we must say 50.0f
+* Double    64 bits     by default : 50.0 is considered as Double
+*
+* all types have first letter in caps because in Kotlin, data types are class and variable becomes an object.
+*/
 
 /*
 * run by clicking Kotlin icon beside main()

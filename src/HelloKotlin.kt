@@ -53,6 +53,44 @@ fun main(args : Array<String>) : Unit {
     val tellTime = TellTime()
     tellTime.getTime(1)
 
+    var list = ArrayList<String>()
+    list.add("Hello")
+    list.add("from")
+    list.add("the")
+    list.add("world")
+    list.add("of")
+    list.add("Kotlin")
+
+    loopTheList(list)
+
+    //print alternate numbers
+    var intProgression : IntProgression = 1..10 step 2
+    loopProgression(intProgression)
+
+    //print range
+    var intRange : IntRange = 1..5
+    loopTheRange(intRange)
+
+    var intReverse : IntProgression = 5 downTo  1
+    loopProgression(intReverse)
+}
+
+fun loopTheRange(intRange: IntRange) {
+    for (i in intRange){
+        println("range list : "+ i)
+    }
+}
+
+fun loopProgression(intProgression: IntProgression) {
+    for (i in intProgression){
+        println("progression list : "+ i)
+    }
+}
+
+fun loopTheList(list: ArrayList<String>) {
+    for (str in list){
+        println("string list : "+ str)
+    }
 }
 
 fun displayPersonInfo(personObj: Person) {

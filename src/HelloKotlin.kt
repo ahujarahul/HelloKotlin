@@ -1,6 +1,7 @@
 import models.Person
 import utils.Addition
 import utils.FindMax
+import utils.NamedArguments
 import utils.TellTime
 
 /**
@@ -14,11 +15,11 @@ fun main(args : Array<String>) : Unit {
     print("print() will not go to a new line.")
     println("println() will go to a new line.")
 
-    //Variable declaration
-    var string1 = "This is sample string variable not constant"
+    //Variable declaration and assignment of value
+    var string1 = "This is sample string variable and it is not a constant."
 
-    //another way of declaring variable
-    var string2: String
+    //declaring variable
+    var string2: String? = null
     string2 = "This is not a constant"
     println("String2 : "+ string2)
 
@@ -27,8 +28,7 @@ fun main(args : Array<String>) : Unit {
     val string3 = "this is a constant string and cannot reassigned"
     //string3 = "reassign constant strings' value generates error"
 
-    var name : String
-    name = "Rahul"
+    var name : String = "Rahul"
     displayName(name)
 
     var demoObj = Demo()
@@ -37,9 +37,51 @@ fun main(args : Array<String>) : Unit {
     val personObj = Person(name, 25, 50000.0, false)
     displayPersonInfo(personObj)
 
+    //object creation and method calling
     var addObj = Addition()
     val addition = addObj.addTwoNumbers(50, 20)
     println("Addition is : "+addition)
+
+    //string interpolation
+    var num1 = 20
+    var num2 = 40
+    println("Addition is --> ${num1 + num2}")
+
+    //single expression function
+    fun multiply(x : Int) : Int = x.times(2)
+    println("single expression function --> ${multiply(5)}")
+
+    //closure or function as a variable
+    val multi: (Int) -> Int = ::multiply
+    println("closure or function as a variable --> ${multi(3)}")
+
+    //function as a parameter
+    fun MultiplyAsParam(operation: (Int) -> Int, x: Int){
+        println("Function as Parameter --> ${operation(x)}")
+    }
+    MultiplyAsParam(multi, 8)
+
+
+    //Null safety
+    var designation : String? = null
+    println("Designation Count --> ${designation?.count()}")
+
+    //Elvis operator --> ?:
+    designation?.let {
+        println("Designation Count --> ${designation?.count()}")
+    } ?: println("Designation Count --> 0")
+
+    designation = "Manager"
+
+    //it keyword --> it is like current object on which operation is going on
+    designation.let {
+        println("Designation is --> $it")
+    }
+
+    //Named Arguments
+    var genericMethod = NamedArguments()
+    genericMethod.build(title = "Rameez", height =  6, width = 2)
+    genericMethod.build(height =  5, width = 1, title = "Rahul")
 
 
     val personName = "Ricky"
@@ -60,8 +102,9 @@ fun main(args : Array<String>) : Unit {
     list.add("world")
     list.add("of")
     list.add("Kotlin")
+    list.add("Collections")
 
-    loopTheList(list)
+    iterateTheList(list)
 
     //print alternate numbers
     var intProgression : IntProgression = 1..10 step 2
@@ -87,7 +130,7 @@ fun loopProgression(intProgression: IntProgression) {
     }
 }
 
-fun loopTheList(list: ArrayList<String>) {
+fun iterateTheList(list: ArrayList<String>) {
     for (str in list){
         println("string list : "+ str)
     }
@@ -120,10 +163,10 @@ class Demo {
         this.name = name
 
         //String concat
-        println("Greetings to "+ name +" \uD83D\uDE0A")
+        println("Greetings to $name \uD83D\uDE0A")
 
         //using string interpolation
-        println("Hello ${name} welcome to Kotlin world")
+        println("Hello ${name + ","} welcome to Kotlin world")
     }
 }
 
@@ -134,7 +177,7 @@ fun getStringDetails(string2: String) {
     println("concat : "+string2.plus( " concat string"))
     println("concat : "+string2.plus( 123))
     println("char at : "+string2[3])
-    println("char at : "+string2.get(3))
+    println("char at : "+ string2[3])
     println("length : "+string2.length)
     println("equals : "+string2.equals("hello", true))
     println("caps first letter : "+string2.capitalize())

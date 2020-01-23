@@ -1,0 +1,8 @@
+*.iws
+
+# User-specific stuff
+.idea/workspace.xml
+.idea/vcs.xml
+.idea/kotlinc.xml
+
+out/

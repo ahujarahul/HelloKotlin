@@ -8,10 +8,11 @@ import utils.TellTime
  * Created by rahulahuja on 15/09/17.
  */
 
-//All variables, when declared, should be initialized in Kotlin
+// All variables, when declared, should be initialized in Kotlin else be declared as nullable data type
+// or declared with 'lateinit' keyword
 
 //This is a Kotlin function which will return void (Unit)
-fun main(args : Array<String>) : Unit {
+fun main(args : Array<String>) {
     print("print() will not go to a new line.")
     println("println() will go to a new line.")
 
@@ -21,30 +22,30 @@ fun main(args : Array<String>) : Unit {
     //declaring variable
     var string2: String? = null
     string2 = "This is not a constant"
-    println("String2 : "+ string2)
+    println("String2 : $string2")
 
     //getStringDetails(string2)
 
     val string3 = "this is a constant string and cannot reassigned"
     //string3 = "reassign constant strings' value generates error"
 
-    var name : String = "Rahul"
+    val name : String = "Rahul"
     displayName(name)
 
-    var demoObj = Demo()
+    val demoObj = Demo()
     demoObj.greet("Ray")
 
     val personObj = Person(name, 25, 50000.0, false)
     displayPersonInfo(personObj)
 
     //object creation and method calling
-    var addObj = Addition()
+    val addObj = Addition()
     val addition = addObj.addTwoNumbers(50, 20)
-    println("Addition is : "+addition)
+    println("Addition is : $addition")
 
     //string interpolation
-    var num1 = 20
-    var num2 = 40
+    val num1 = 20
+    val num2 = 40
     println("Addition is --> ${num1 + num2}")
 
     //single expression function
@@ -56,10 +57,10 @@ fun main(args : Array<String>) : Unit {
     println("closure or function as a variable --> ${multi(3)}")
 
     //function as a parameter
-    fun MultiplyAsParam(operation: (Int) -> Int, x: Int){
+    fun multiplyAsParam(operation: (Int) -> Int, x: Int){
         println("Function as Parameter --> ${operation(x)}")
     }
-    MultiplyAsParam(multi, 8)
+    multiplyAsParam(multi, 8)
 
 
     //Null safety
@@ -67,19 +68,17 @@ fun main(args : Array<String>) : Unit {
     println("Designation Count --> ${designation?.count()}")
 
     //Elvis operator --> ?:
+    //it keyword --> it is the current object on which operation is going on
     designation?.let {
-        println("Designation Count --> ${designation?.count()}")
+        println("Designation Count --> ${it.count()}")
     } ?: println("Designation Count --> 0")
 
     designation = "Manager"
 
-    //it keyword --> it is like current object on which operation is going on
-    designation.let {
-        println("Designation is --> $it")
-    }
+    println("Designation is --> $designation")
 
     //Named Arguments
-    var genericMethod = NamedArguments()
+    val genericMethod = NamedArguments()
     genericMethod.build(title = "Rameez", height =  6, width = 2)
     genericMethod.build(height =  5, width = 1, title = "Rahul")
 
@@ -95,7 +94,7 @@ fun main(args : Array<String>) : Unit {
     val tellTime = TellTime()
     tellTime.getTime(1)
 
-    var list = ArrayList<String>()
+    val list = ArrayList<String>()
     list.add("Hello")
     list.add("from")
     list.add("the")
@@ -107,32 +106,32 @@ fun main(args : Array<String>) : Unit {
     iterateTheList(list)
 
     //print alternate numbers
-    var intProgression : IntProgression = 1..10 step 2
+    val intProgression : IntProgression = 1..10 step 2
     loopProgression(intProgression)
 
     //print range
-    var intRange : IntRange = 1..5
+    val intRange : IntRange = 1..5
     loopTheRange(intRange)
 
-    var intReverse : IntProgression = 5 downTo  1
+    val intReverse : IntProgression = 5 downTo  1
     loopProgression(intReverse)
 }
 
 fun loopTheRange(intRange: IntRange) {
     for (i in intRange){
-        println("range list : "+ i)
+        println("range list : $i")
     }
 }
 
 fun loopProgression(intProgression: IntProgression) {
     for (i in intProgression){
-        println("progression list : "+ i)
+        println("progression list : $i")
     }
 }
 
 fun iterateTheList(list: ArrayList<String>) {
     for (str in list){
-        println("string list : "+ str)
+        println("string list : $str")
     }
 }
 
@@ -157,7 +156,7 @@ fun displayPersonInfo(personObj: Person) {
 
 class Demo {
 
-    var name : String = ""
+    private var name : String = ""
 
     fun greet(name: String){
         this.name = name
@@ -166,7 +165,7 @@ class Demo {
         println("Greetings to $name \uD83D\uDE0A")
 
         //using string interpolation
-        println("Hello ${name + ","} welcome to Kotlin world")
+        println("Hello ${"$name,"} welcome to Kotlin world")
     }
 }
 
@@ -186,11 +185,11 @@ fun getStringDetails(string2: String) {
     println("drop : "+string2.drop(4))
     println("drop last : "+string2.dropLast(4))
     println("ends with : "+string2.endsWith("stRIng",true))
-    println("String immutable in Kotlin : "+string2)
+    println("String immutable in Kotlin : $string2")
 }
 
 fun displayName(name: String) {
-    println("in displayName() -- Name is : "+ name)
+    println("in displayName() -- Name is : $name")
 }
 
 /*

@@ -25,23 +25,4 @@ class TellTime {
           else -> println("DND i am at work")
       }//when
     }
-
-
-    /* when as expression -- returned string will be stored in 'return'
-    *
-    * var return = when(hour){
-          0, 1, 2, 3, 4 -> {
-              //multiple lines in a case
-              "it is midnight"
-              "Do not disturb me"
-          }// case ends
-
-          5 -> "good morning"
-          12 -> "good noon"
-          16 -> "good evening"
-          22 -> "good night"
-
-          else -> "DND i am at work"
-      }
-    */
 }

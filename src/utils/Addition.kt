@@ -17,7 +17,7 @@ class Addition{
 
     //write below block to init values into local var from constructor
     init {
-        println("\ninside init block")
+        println("\nAddition :: inside init block")
     }
 
     fun addTwoNumbers(num1 : Int, num2 : Int) : Int {

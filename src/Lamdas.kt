@@ -1,5 +1,3 @@
-import com.sun.tools.javac.jvm.Items
-
 /**
  * Created by rahulahuja on 30/05/18.
  */
@@ -30,10 +28,7 @@ fun main(args: Array<String>){
         callback("Yo yo")
     }
 
-    showMessage({
+    showMessage {
         println("Callback $it")
-    })
-
-
-
+    }
 }
